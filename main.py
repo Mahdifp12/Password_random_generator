@@ -2,7 +2,6 @@
 
 import random
 import string
-import pprint
 
 settings = {
     "length": 6,
@@ -33,6 +32,8 @@ def yes_or_no(option, default):
         
         
 def get_length_from_user(option, default_length, pw_min_length=4, pw_max_length=30):
+    
+    
     while True:
         
         user_length = input(f"Enter your password length ?" 
@@ -101,7 +102,6 @@ def generate_random_char(choices):
 def password_generator():
     finally_password = ''
     password_length = settings["length"]
-    # choices = []
 
     choices = list(filter(lambda status: settings[status] == True, ['lower', 'upper', 'symbols', 'numbers', 'spaces']))
 
@@ -113,4 +113,3 @@ def password_generator():
 
 get_settings_from_user(settings)
 print(password_generator())
-# pprint.pprint(settings)

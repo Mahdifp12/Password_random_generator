@@ -89,13 +89,13 @@ def generate_random_char(choices):
 
     if choice == "lower":
         return get_random_lower_case()
-    elif choice == "upper":
+    if choice == "upper":
         return get_random_upper_case()
-    elif choice == "numbers":
+    if choice == "numbers":
         return get_random_numbers()
-    elif choice == "symbols":
+    if choice == "symbols":
         return get_random_symbols()
-    elif choice == "spaces":
+    if choice == "spaces":
         return " "
 
 

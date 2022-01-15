@@ -1,8 +1,10 @@
  #? length , upper, lower, symbols, numbers, spaces
 
+from mimetypes import init
 import random
 import string
 import os
+import colorama
 
 
 settings = {
@@ -16,6 +18,25 @@ settings = {
 
 PASSWORD_MIN_LENGTH = 8
 PASSWORD_MAX_LENGTH = 30
+
+
+def print_password_generator_text():
+    init()
+    print(colorama.Fore.CYAN+"""
+██████╗░░█████╗░░██████╗░██████╗░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░
+██╔══██╗██╔══██╗██╔════╝██╔════╝░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗
+██████╔╝███████║╚█████╗░╚█████╗░░╚██╗████╗██╔╝██║░░██║██████╔╝██║░░██║
+██╔═══╝░██╔══██║░╚═══██╗░╚═══██╗░░████╔═████║░██║░░██║██╔══██╗██║░░██║
+██║░░░░░██║░░██║██████╔╝██████╔╝░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██████╔╝
+╚═╝░░░░░╚═╝░░╚═╝╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═════╝░
+
+░██████╗░███████╗███╗░░██╗███████╗██████╗░░█████╗░████████╗░█████╗░██████╗░
+██╔════╝░██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗
+██║░░██╗░█████╗░░██╔██╗██║█████╗░░██████╔╝███████║░░░██║░░░██║░░██║██████╔╝
+██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║░░░██║░░░██║░░██║██╔══██╗
+╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║
+░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝\n""")
+
 
 def clear_screen():
     os.system("cls")
@@ -77,6 +98,22 @@ def get_settings_from_user(settings):
             user_length = get_length_from_user(option, default)
             
             settings[option] = user_length
+
+def ask_if_change_settings(settings):
+    while True:
+
+        user_answer = input("do you want change default settings? (y: yes, n: no, enter: yes): ")
+        
+        if user_answer in ['y', 'n', '']:
+            if user_answer in ['y', '']:
+                print('-'*5, 'Change Settings', '-'*5, sep='')
+                get_settings_from_user(settings)
+            break
+
+        else:
+            print("Invalid input.")
+            print("Please try again.")
+
 
 def get_random_upper_case():
     return random.choice(string.ascii_uppercase)
@@ -140,7 +177,9 @@ def password_generator_loop():
 
 def run():
     clear_screen()
-    get_settings_from_user(settings)
+    print_password_generator_text()
+    ask_if_change_settings(settings)
     password_generator_loop()
+    print("Thank you choosing us.")
     
 run()

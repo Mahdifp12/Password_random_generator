@@ -2,9 +2,11 @@
 
 import random
 import string
+import os
+
 
 settings = {
-    "length": 6,
+    "length": 8,
     "upper": True,
     "lower": True,
     "symbols": True,
@@ -12,6 +14,11 @@ settings = {
     "spaces": False
 }
 
+PASSWORD_MIN_LENGTH = 8
+PASSWORD_MAX_LENGTH = 30
+
+def clear_screen():
+    os.system("cls")
 
 def yes_or_no(option, default):
     
@@ -31,7 +38,7 @@ def yes_or_no(option, default):
         print("invalid input. please try agin!")
         
         
-def get_length_from_user(option, default_length, pw_min_length=4, pw_max_length=30):
+def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENGTH, pw_max_length=PASSWORD_MAX_LENGTH):
     
     
     while True:
@@ -111,5 +118,29 @@ def password_generator():
     return finally_password
 
 
-get_settings_from_user(settings)
-print(password_generator())
+def ask_user_to_generate_another_password():
+    while True:
+        user_answer = input('Regenerate? (y: yes, n: no, enter: yes): ').lower()
+        if user_answer in ['y', 'n', '']:
+            if user_answer == 'n':
+                return False
+            return True
+        else:
+            print("Invalid input.")
+            print("Please try again.")
+
+def password_generator_loop():
+
+    while True:
+        print('-' * 30)
+        print(f'Your password generated: {password_generator()}')
+        
+        if ask_user_to_generate_another_password() == False:
+            break
+
+def run():
+    clear_screen()
+    get_settings_from_user(settings)
+    password_generator_loop()
+    
+run()

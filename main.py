@@ -102,7 +102,8 @@ def get_settings_from_user(settings):
 def ask_if_change_settings(settings):
     while True:
 
-        user_answer = input("do you want change default settings? (y: yes, n: no, enter: yes): ")
+        user_answer = input("do you want change default settings?"
+                        "(y: yes, n: no, enter: yes): ")
         
         if user_answer in ['y', 'n', '']:
             if user_answer in ['y', '']:
@@ -147,7 +148,8 @@ def password_generator():
     finally_password = ''
     password_length = settings["length"]
 
-    choices = list(filter(lambda status: settings[status] == True, ['lower', 'upper', 'symbols', 'numbers', 'spaces']))
+    choices = list(filter(lambda status: settings[status] == True, 
+    ['lower', 'upper', 'symbols', 'numbers', 'spaces']))
 
     for i in range(password_length):
         finally_password += generate_random_char(choices)

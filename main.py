@@ -3,7 +3,6 @@
 import os
 import random
 import string
-from mimetypes import init
 import colorama
 
 settings = {
@@ -20,7 +19,7 @@ PASSWORD_MAX_LENGTH = 30
 
 
 def print_password_generator_text():
-    init()
+
     print(colorama.Fore.CYAN+"""
 ██████╗░░█████╗░░██████╗░██████╗░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░
 ██╔══██╗██╔══██╗██╔════╝██╔════╝░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗

@@ -3,8 +3,9 @@
 import os
 import random
 import string
-import colorama
 from sys import platform
+
+import colorama
 
 settings = {
     "length": 8,
@@ -43,6 +44,7 @@ def clear_screen():
 
     elif platform == "win32":
         os.system("cls")
+
 
 def yes_or_no(option, default):
 

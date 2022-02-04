@@ -1,5 +1,3 @@
-# ? length , upper, lower, symbols, numbers, spaces
-
 import os
 import random
 import string

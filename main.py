@@ -3,7 +3,7 @@ import random
 import string
 from sys import platform
 
-import colorama
+from termcolor import colored
 
 settings = {
     "length": 8,
@@ -20,7 +20,8 @@ PASSWORD_MAX_LENGTH = 30
 
 def print_password_generator_text():
 
-    print(colorama.Fore.CYAN+"""
+
+    print(colored("""
 ██████╗░░█████╗░░██████╗░██████╗░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░
 ██╔══██╗██╔══██╗██╔════╝██╔════╝░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗
 ██████╔╝███████║╚█████╗░╚█████╗░░╚██╗████╗██╔╝██║░░██║██████╔╝██║░░██║
@@ -33,8 +34,10 @@ def print_password_generator_text():
 ██║░░██╗░█████╗░░██╔██╗██║█████╗░░██████╔╝███████║░░░██║░░░██║░░██║██████╔╝
 ██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║░░░██║░░░██║░░██║██╔══██╗
 ╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║░░░██║░░░╚█████╔╝██║░░██║
-░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝\n""")
+░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝\n""", color='blue'))
 
+    print(colored("GitHub : https://github.com/Mahdifp12", 'yellow'))
+    print(colored("Linkdin : https://www.linkedin.com/in/mahdi-fallaht-pishe-62b45a217/\n", 'yellow'))
 
 def clear_screen():
     if platform in ["linux", "linux2", "darwin"]:
@@ -58,7 +61,7 @@ def yes_or_no(option, default):
 
             return user_input == 'y'
 
-        print("invalid input. please try agin!")
+        print(colored("invalid input. please try agin!", 'red'))
 
 
 def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENGTH, pw_max_length=PASSWORD_MAX_LENGTH):
@@ -84,9 +87,9 @@ def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENG
                 f"Password length should be between {pw_min_length} and {pw_max_length}")
 
         else:
-            print('Invalid input. you should enter a number')
+            print(colored('Invalid input. you should enter a number', 'red'))
 
-        print("please try agin !")
+        print(colored("please try agin !", 'red'))
 
 
 def get_settings_from_user(settings):
@@ -111,13 +114,13 @@ def ask_if_change_settings(settings):
 
         if user_answer in ['y', 'n', '']:
             if user_answer in ['y', '']:
-                print('-'*5, 'Change Settings', '-'*5, sep='')
+                print('-'*5, colored('Change Settings', 'blue'), '-'*5, sep='')
                 get_settings_from_user(settings)
             break
 
         else:
-            print("Invalid input.")
-            print("Please try again.")
+            print(colored("Invalid input.", 'red'))
+            print(colored("Please try again.", 'red'))
 
 
 def get_random_upper_case():
@@ -173,8 +176,8 @@ def ask_user_to_generate_another_password():
                 return False
             return True
         else:
-            print("Invalid input.")
-            print("Please try again.")
+            print(colored("Invalid input.", 'red'))
+            print(colored("Please try again.", 'red'))
 
 
 def password_generator_loop():
@@ -192,7 +195,7 @@ def run():
     print_password_generator_text()
     ask_if_change_settings(settings)
     password_generator_loop()
-    print("Thank you choosing us.")
+    print(colored("Thank you choosing us.", 'green'))
 
 
 run()

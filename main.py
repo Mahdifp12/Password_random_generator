@@ -19,8 +19,6 @@ PASSWORD_MAX_LENGTH = 30
 
 
 def print_password_generator_text():
-
-
     print(colored("""
 ██████╗░░█████╗░░██████╗░██████╗░██╗░░░░░░░██╗░█████╗░██████╗░██████╗░
 ██╔══██╗██╔══██╗██╔════╝██╔════╝░██║░░██╗░░██║██╔══██╗██╔══██╗██╔══██╗
@@ -39,6 +37,7 @@ def print_password_generator_text():
     print(colored("GitHub : https://github.com/Mahdifp12", 'yellow'))
     print(colored("Linkdin : https://www.linkedin.com/in/mahdi-fallaht-pishe-62b45a217/\n", 'yellow'))
 
+
 def clear_screen():
     if platform in ["linux", "linux2", "darwin"]:
         os.system("clear")
@@ -48,7 +47,6 @@ def clear_screen():
 
 
 def yes_or_no(option, default):
-
     while True:
 
         user_input = input(f"include {option}?"
@@ -58,14 +56,12 @@ def yes_or_no(option, default):
             return default
 
         if user_input in ['y', 'n']:
-
             return user_input == 'y'
 
         print(colored("invalid input. please try agin!", 'red'))
 
 
 def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENGTH, pw_max_length=PASSWORD_MAX_LENGTH):
-
     while True:
 
         user_length = input(f"Enter your password length ?"
@@ -79,7 +75,6 @@ def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENG
             user_length = int(user_length)
 
             if pw_min_length <= user_length <= pw_max_length:
-
                 return user_length
 
             print("Invalid input.")
@@ -93,7 +88,6 @@ def get_length_from_user(option, default_length, pw_min_length=PASSWORD_MIN_LENG
 
 
 def get_settings_from_user(settings):
-
     for option, default in settings.items():
         if option != "length":
             user_choice = yes_or_no(option, default)
@@ -114,7 +108,7 @@ def ask_if_change_settings(settings):
 
         if user_answer in ['y', 'n', '']:
             if user_answer in ['y', '']:
-                print('-'*5, colored('Change Settings', 'blue'), '-'*5, sep='')
+                print('-' * 5, colored('Change Settings', 'blue'), '-' * 5, sep='')
                 get_settings_from_user(settings)
             break
 
@@ -181,7 +175,6 @@ def ask_user_to_generate_another_password():
 
 
 def password_generator_loop():
-
     while True:
         print('-' * 30)
         print(f'Your password generated: {password_generator()}')

@@ -1,8 +1,8 @@
 import os
 import random
-import string
 from sys import platform
-
+from ascii_module.choice_ascii_string import get_random_symbols, get_random_numbers, get_random_lower_case, \
+    get_random_upper_case
 from termcolor import colored
 
 settings = {
@@ -117,22 +117,6 @@ def ask_if_change_settings(settings):
             print(colored("Please try again.", 'red'))
 
 
-def get_random_upper_case():
-    return random.choice(string.ascii_uppercase)
-
-
-def get_random_lower_case():
-    return random.choice(string.ascii_lowercase)
-
-
-def get_random_numbers():
-    return random.choice("123456789")
-
-
-def get_random_symbols():
-    return random.choice("""{)(}[]''#@!?&%$"*_="-+|/~,<>:;""")
-
-
 def generate_random_char(choices):
     choice = random.choice(choices)
 
@@ -179,16 +163,13 @@ def password_generator_loop():
         print('-' * 30)
         print(f'Your password generated: {password_generator()}')
 
-        if ask_user_to_generate_another_password() == False:
+        if not ask_user_to_generate_another_password():
             break
 
 
-def run():
+if __name__ == "__main__":
     clear_screen()
     print_password_generator_text()
     ask_if_change_settings(settings)
     password_generator_loop()
     print(colored("Thank you choosing us.", 'green'))
-
-
-run()

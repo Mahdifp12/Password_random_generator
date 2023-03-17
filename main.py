@@ -136,7 +136,7 @@ def password_generator():
     finally_password = ''
     password_length = settings["length"]
 
-    choices = list(filter(lambda status: settings[status] == True,
+    choices = list(filter(lambda status: settings[status] is True,
                           ['lower', 'upper', 'symbols', 'numbers', 'spaces']))
 
     for i in range(password_length):

@@ -39,12 +39,7 @@ def print_password_generator_text():
 
 
 def clear_screen():
-    os.system("clear") if platform in ["linux", "linux2", "darwin"] elif os.system("cls")
-    # if platform in ["linux", "linux2", "darwin"]:
-    #     os.system("clear")
-
-    # elif platform == "win32":
-    #     os.system("cls")
+    os.system("clear") if platform in ["linux", "linux2", "darwin"] else os.system("cls")
 
 
 def yes_or_no(option, default):
